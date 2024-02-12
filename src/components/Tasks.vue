@@ -19,14 +19,12 @@ export default {
     },
     methods: {
         updateTaskCheckbox({ taskId, isChecked }) {
-            console.log(isChecked);
             const updatedTasks = this.tasks.map(task => {
                 if (task.id === taskId) {
                     return { ...task, checked: isChecked };
                 }
                 return task;
             });
-            // console.log(updatedTasks);
             this.$emit('tasks-updated', updatedTasks);
         }
     }

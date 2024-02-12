@@ -34,10 +34,6 @@ export default {
                 taskId: this.task.id,
                 isChecked: this.isChecked
             });
-            // console.log({
-            //     taskId: this.task.id,
-            //     isChecked: !this.isChecked ? true : false
-            // });
 
         }
     }

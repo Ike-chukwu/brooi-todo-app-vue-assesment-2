@@ -8,22 +8,7 @@
           <i class="fas fa-plus"></i>
         </button>
       </div>
-      <!-- <InputField @add-new-task="addTask" @edit-task="editTask" /> -->
       <Tasks @tasks-updated="updateTasks" :tasks="tasks" @delete-task="deleteTask" @edit-task="editTask" />
-      <!-- <div class="tasksContainer">
-        <div class="task-wrapper">
-          <p class="task">${task}</p>
-          <div class="icon-pack">
-            <button class="editBtn">
-              <i class="fas fa-pen"></i>
-            </button>
-            <input type="checkbox" class="i-check" />
-            <button class="deleteBtn">
-              <i class="fas fa-trash"></i>
-            </button>
-          </div>
-        </div>
-      </div> -->
       <div class="task-status-wrapper">
         <span class="task-status"> {{ this.tasks.filter((task) => task.checked == true).length }} out of {{
           this.tasks.length }} tasks completed </span>
@@ -63,7 +48,6 @@ export default {
           this.tasks = listOfTasksCopy
           this.shouldBeEdited = false
           this.taskToBeEditedId = null
-          // console.log(this.tasks);
         }
         else {
           const newTask = {
@@ -71,36 +55,19 @@ export default {
             taskValue: this.taskValue,
             checked: false
           }
-          // this.$emit('add-new-task', newTask)
           this.tasks = [...this.tasks, newTask]
-          // console.log(newTask);
-          // console.log(this.tasks);
-
         }
         this.taskValue = ""
       }
     },
 
-    // addTask(task) {
-    //   this.tasks = [...this.tasks, task]
-    //   console.log(this.tasks);
-    // },
-
     deleteTask(id) {
-      console.log(id);
       this.tasks = this.tasks.filter((task) => {
         return task.id !== id
       })
     },
 
     editTask(id, value) {
-      // this.tasks = this.tasks.map((task) => {
-      //   if (task.id == id) {
-      //     return { ...task, taskValue: value }
-      //   }
-      //   return task
-      // })
-      console.log(id, value);
       this.taskValue = value
       this.shouldBeEdited = true
       this.taskToBeEditedId = id
@@ -108,7 +75,6 @@ export default {
 
     updateTasks(updatedTasks) {
       this.tasks = updatedTasks;
-      console.log(this.tasks);
     }
   }
 }
@@ -200,5 +166,23 @@ body {
   font-weight: bold;
   padding: .4rem .5rem;
   cursor: pointer;
+}
+
+@media(max-width:430px) {
+  .todo-container .inner-todo-container {
+    width: 350px;
+    padding-top: 1rem;
+    padding-bottom: 4.5rem;
+    padding-inline: 1.5rem;
+  }
+}
+
+@media(max-width:350px) {
+  .todo-container .inner-todo-container {
+    width: 260px;
+    padding-top: 1rem;
+    padding-bottom: 6rem;
+    padding-inline: 1.5rem;
+  }
 }
 </style>
